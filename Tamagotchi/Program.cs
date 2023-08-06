@@ -37,13 +37,16 @@ class Program
         }
     }
 
-    private static void GetPokemon(string term)
+    public static RestResponse GetPokemon(string term)
     {
-        var client = new RestClient($"https://pokeapi.co/api/v2/pokemon/{term}");
+        var client = new RestClient($"https://pokeapi.co/api/v2/pokemon/{term.ToLower()}");
         var request = new RestRequest("", Method.Get);
         var response = client.Execute(request);
 
-        if (response.StatusCode == System.Net.HttpStatusCode.OK)
+        return response;
+    }
+
+    public static void ShowAdoptedPokemons()
         {
             var json = JsonSerializer.Deserialize<Pokemon>(response.Content);
 
