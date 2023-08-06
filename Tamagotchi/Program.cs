@@ -61,9 +61,16 @@ class Program
             Console.WriteLine($"{Capitalize(pokemon.name)}");
             }
         }
-        else
+
+    public static void PokemonInfo(Pokemon pokemon)
+    {
+        Console.WriteLine($"Nome Pokemon: {Capitalize(pokemon.name)}");
+        Console.WriteLine($"Altura: {pokemon.height}");
+        Console.WriteLine($"Peso: {pokemon.weight}");
+        Console.WriteLine("Habilidades:");
+        foreach (var ability in pokemon.abilities)
         {
-            Console.WriteLine(response.ErrorMessage);
+            Console.WriteLine(Capitalize(ability.ability.name));
         }
     }
 
