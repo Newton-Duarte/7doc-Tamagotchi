@@ -17,7 +17,7 @@ class Program
         Menu.Open();
     }
 
-    private static void GetPokemons()
+    public static void GetPokemons()
     {
         var client = new RestClient($"https://pokeapi.co/api/v2/pokemon");
         var request = new RestRequest("", Method.Get);
@@ -33,7 +33,7 @@ class Program
         }
         else
         {
-            System.Console.WriteLine(response.ErrorMessage);
+            Console.WriteLine(response.ErrorMessage);
         }
     }
 
