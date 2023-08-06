@@ -48,15 +48,17 @@ class Program
 
     public static void ShowAdoptedPokemons()
         {
-            var json = JsonSerializer.Deserialize<Pokemon>(response.Content);
+        if (adoptedPokemons.Count == 0)
+        {
+            Console.WriteLine("Lista vazia");
+            return;
+        }
 
-            Console.WriteLine($"Nome Pokemon: {Capitalize(json.name)}");
-            Console.WriteLine($"Altura: {json.height}");
-            Console.WriteLine($"Peso: {json.weight}");
-            Console.WriteLine("Habilidades:");
-            foreach (var ability in json.abilities)
+        Console.WriteLine("----------- Pokemons Adotados ----------");
+
+        foreach (var pokemon in adoptedPokemons)
             {
-                Console.WriteLine(Capitalize(ability.ability.name));
+            Console.WriteLine($"{Capitalize(pokemon.name)}");
             }
         }
         else
