@@ -11,8 +11,10 @@ class Program
 
     static void Main(string[] args)
     {
-        GetPokemons();
-        //GetPokemon("pikachu");
+        Console.WriteLine("Qual o seu nome?");
+        name = Console.ReadLine();
+
+        Menu.Open();
     }
 
     private static void GetPokemons()
