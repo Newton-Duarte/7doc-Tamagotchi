@@ -6,6 +6,9 @@ using System.Text.Json;
 
 class Program
 {
+    public static string name = "";
+    public static List<Pokemon> adoptedPokemons = new List<Pokemon>();
+
     static void Main(string[] args)
     {
         GetPokemons();
