@@ -1,8 +1,8 @@
 ﻿using RestSharp;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text.Json;
+using Tamagotchi;
 
 class Program
 {
@@ -47,7 +47,7 @@ class Program
     }
 
     public static void ShowAdoptedPokemons()
-        {
+    {
         if (adoptedPokemons.Count == 0)
         {
             Console.WriteLine("Lista vazia");
@@ -57,10 +57,10 @@ class Program
         Console.WriteLine("----------- Pokemons Adotados ----------");
 
         foreach (var pokemon in adoptedPokemons)
-            {
+        {
             Console.WriteLine($"{Capitalize(pokemon.name)}");
-            }
         }
+    }
 
     public static void PokemonInfo(Pokemon pokemon)
     {
