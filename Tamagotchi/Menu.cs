@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.Json;
+using Tamagotchi.Model;
+using Tamagotchi.Services;
 using static Program;
+using static Tamagotchi.Services.PokemonService;
 
 namespace Tamagotchi
 {
@@ -27,16 +31,21 @@ namespace Tamagotchi
                 case 1:
                     Console.WriteLine("Escolha um pokemon:");
                     Divider();
-                    GetPokemons();
+                    PokemonService.GetPokemons();
                     Divider();
                     string answer = Console.ReadLine();
-                    var response = GetPokemon(answer);
+                    var response = PokemonService.GetPokemon(answer);
 
                     if (response.StatusCode == System.Net.HttpStatusCode.OK)
                     {
-                        pokemon = JsonSerializer.Deserialize<Pokemon>(response.Content);
+                        var pokemonRecord = JsonSerializer.Deserialize<PokemonRecord>(response.Content);
+                        var abilities = new List<string>();
+                        foreach ( var ability in pokemonRecord.abilities)
+                        {
+                            abilities.Add(ability.ability.name);
+                        }
+                        pokemon = new Pokemon(pokemonRecord.name, pokemonRecord.height, pokemonRecord.weight, abilities);
                         PokemonMenu();
-
                     }
                     else
                     {
@@ -67,7 +76,7 @@ namespace Tamagotchi
             {
                 case 1:
                     Divider();
-                    PokemonInfo(pokemon);
+                    Console.WriteLine(pokemon.ToString());
                     PokemonMenu();
                     break;
                 case 2:
@@ -95,8 +104,8 @@ namespace Tamagotchi
         {
             Divider();
             Console.WriteLine($"{name}, você deseja:");
-            Console.WriteLine($"1 - Saber mais sobre o {pokemon.name}");
-            Console.WriteLine($"2 - Adotar {pokemon.name}");
+            Console.WriteLine($"1 - Saber mais sobre o {Capitalize(pokemon.Name)}");
+            Console.WriteLine($"2 - Adotar {Capitalize(pokemon.Name)}");
             Console.WriteLine("3 - Voltar");
 
             int pokemonMenuOption = int.Parse(Console.ReadLine());
