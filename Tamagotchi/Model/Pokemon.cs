@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Tamagotchi.Utils;
 using static Program;
 using static Tamagotchi.Services.PokemonService;
 
@@ -34,7 +35,7 @@ namespace Tamagotchi.Model
         {
 
             return @$"
-            Nome Pokemon: {Capitalize(Name)}
+            Nome Pokemon: {TamagotchiUtils.Capitalize(Name)}
             Altura: {Height}
             Peso: {Weigth}
             Habilidades: {String.Join(",", Abilities)}
