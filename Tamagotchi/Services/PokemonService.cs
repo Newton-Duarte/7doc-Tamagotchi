@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Tamagotchi.Model;
+using Tamagotchi.Utils;
 using static Program;
 
 namespace Tamagotchi.Services
@@ -27,7 +28,7 @@ namespace Tamagotchi.Services
                 {
                     var newPokemon = new Pokemon(pokemon.name, pokemon.height, pokemon.weight);
 
-                    Console.WriteLine($"{Capitalize(newPokemon.Name)}");
+                    Console.WriteLine($"{TamagotchiUtils.Capitalize(newPokemon.Name)}");
                 }
             }
             else
