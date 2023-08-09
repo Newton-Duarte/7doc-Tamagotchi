@@ -34,10 +34,10 @@ namespace Tamagotchi.Model
         {
 
             return @$"
-                Nome Pokemon: {Capitalize(Name)}
-                Altura: {Height}
-                Peso: {Weigth}
-                Habilidades: {String.Join(",", Abilities)}
+            Nome Pokemon: {Capitalize(Name)}
+            Altura: {Height}
+            Peso: {Weigth}
+            Habilidades: {String.Join(",", Abilities)}
             ";
         }
     }
